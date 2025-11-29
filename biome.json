@@ -19,8 +19,25 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "suspicious": {
+        // varを禁止
+        "noVar": "error",
+        // any禁止
+        "noExplicitAny": "error",
+        // console.logを警告
+        "noConsole": "warn"
+      },
+      "style": {
+        // 再代入しない変数はconstを強制
+        "useConst": "error",
+        // !(非nullアサーション)を禁止
+        "noNonNullAssertion": "error"
+      },
       "correctness": {
-        "noUnusedImports": "error"
+        // 未使用の警告を禁止
+        "noUnusedImports": "error",
+        // 未使用変数禁止
+        "noUnusedVariables": "error"
       }
     }
   },
