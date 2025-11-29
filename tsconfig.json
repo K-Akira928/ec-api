@@ -27,6 +27,6 @@
     // TypeScript の厳格な型チェックオプションをすべて有効にする
     "strict": true,
     // node_modules 内にある定義ファイルの中身の型チェックをスキップする
-    "skipLibCheck": true,
+    "skipLibCheck": true
   }
 }
