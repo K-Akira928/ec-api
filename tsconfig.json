@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "nodenext",
+    "types": ["vitest/globals"],
     // jsファイルの出力を省略
     "noEmit": true,
     "allowImportingTsExtensions": true,
