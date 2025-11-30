@@ -1,0 +1,25 @@
+services:
+  api:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "pnpm install --frozen-lockfile && pnpm dev"
+    depends_on:
+      - db
+  db:
+    image: mysql:8.4
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
