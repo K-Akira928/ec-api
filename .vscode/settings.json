@@ -25,5 +25,8 @@
 	},
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"files.associations": {
+		"biome.json": "jsonc"
 	}
 }

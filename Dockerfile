@@ -13,5 +13,3 @@ RUN chown -R node:node .
 USER node
 
 EXPOSE 3000
-
-CMD [ "/bin/bash" ]
