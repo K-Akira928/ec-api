@@ -1,7 +1,7 @@
 {
-	"recommendations": [
-		"biomejs.biome",
-		"shardulm94.trailing-spaces",
-		"streetsidesoftware.code-spell-checker"
-	]
+  "recommendations": [
+    "biomejs.biome",
+    "shardulm94.trailing-spaces",
+    "streetsidesoftware.code-spell-checker"
+  ]
 }

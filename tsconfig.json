@@ -1,33 +1,33 @@
 {
-	"compilerOptions": {
-		"target": "es2022",
-		"module": "nodenext",
-		"types": ["vitest/globals"],
-		// jsファイルの出力を省略
-		"noEmit": true,
-		"allowImportingTsExtensions": true,
-		"erasableSyntaxOnly": true,
-		// .ts と出力された .js を対応付けるマップファイル (.js.map) を生成
-		"sourceMap": true,
-		// 配列やオブジェクトへのアクセスの結果に自動的に undefined を含める
-		"noUncheckedIndexedAccess": true,
-		// オプショナルなプロパティに明示的に undefined を代入することを禁止
-		"exactOptionalPropertyTypes": true,
-		// ファイルごとに単独でトランスパイル可能であることを強制
-		"isolatedModules": true,
-		// 副作用のみのインポートで、解決できないファイルがある場合にエラー
-		"noUncheckedSideEffectImports": true,
-		// すべてのファイルをモジュールとして扱う
-		"moduleDetection": "force",
-		// import type や export type の書き方を強制
-		"verbatimModuleSyntax": true,
-		// CommonJS 形式のライブラリを、ES Modules 形式のようにインポートできるようにする
-		"esModuleInterop": true,
-		// ファイル名の参照時に、大文字・小文字を区別する
-		"forceConsistentCasingInFileNames": true,
-		// TypeScript の厳格な型チェックオプションをすべて有効にする
-		"strict": true,
-		// node_modules 内にある定義ファイルの中身の型チェックをスキップする
-		"skipLibCheck": true
-	}
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "types": ["vitest/globals"],
+    // jsファイルの出力を省略
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    // .ts と出力された .js を対応付けるマップファイル (.js.map) を生成
+    "sourceMap": true,
+    // 配列やオブジェクトへのアクセスの結果に自動的に undefined を含める
+    "noUncheckedIndexedAccess": true,
+    // オプショナルなプロパティに明示的に undefined を代入することを禁止
+    "exactOptionalPropertyTypes": true,
+    // ファイルごとに単独でトランスパイル可能であることを強制
+    "isolatedModules": true,
+    // 副作用のみのインポートで、解決できないファイルがある場合にエラー
+    "noUncheckedSideEffectImports": true,
+    // すべてのファイルをモジュールとして扱う
+    "moduleDetection": "force",
+    // import type や export type の書き方を強制
+    "verbatimModuleSyntax": true,
+    // CommonJS 形式のライブラリを、ES Modules 形式のようにインポートできるようにする
+    "esModuleInterop": true,
+    // ファイル名の参照時に、大文字・小文字を区別する
+    "forceConsistentCasingInFileNames": true,
+    // TypeScript の厳格な型チェックオプションをすべて有効にする
+    "strict": true,
+    // node_modules 内にある定義ファイルの中身の型チェックをスキップする
+    "skipLibCheck": true
+  }
 }
