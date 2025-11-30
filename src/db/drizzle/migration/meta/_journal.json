@@ -8,6 +8,13 @@
       "when": 1764492064277,
       "tag": "0000_large_tyger_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1764493461756,
+      "tag": "0001_grey_magus",
+      "breakpoints": true
     }
   ]
 }
