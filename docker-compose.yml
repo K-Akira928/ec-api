@@ -5,7 +5,8 @@ services:
       - .:/app
     ports:
       - "3000:3000"
-    command: sh -c "pnpm install --frozen-lockfile && pnpm dev"
+    command: pnpm install --frozen-lockfile
+    tty: true
     depends_on:
       - db
   db:
