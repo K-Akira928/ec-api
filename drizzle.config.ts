@@ -1,14 +1,15 @@
 import { defineConfig } from "drizzle-kit";
+import { dbConfig } from "./src/config/db.ts";
 
 export default defineConfig({
   dialect: "mysql",
   schema: "./src/db/drizzle/schema.ts",
   out: "./src/db/drizzle/migration",
   dbCredentials: {
-    user: "ec_api",
-    password: "cwdeMjdpH9k7Eb6C7wvg",
-    host: "db",
-    port: 3306,
-    database: "ec_api",
+    user: dbConfig.DB_USER,
+    password: dbConfig.DB_PASSWORD,
+    host: dbConfig.DB_HOST,
+    port: dbConfig.DB_PORT,
+    database: dbConfig.DB_DATABASE,
   },
 });

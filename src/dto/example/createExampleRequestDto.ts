@@ -1,5 +1,6 @@
 import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 import z from "zod";
+import { registry } from "../../config/swagger.ts";
 
 extendZodWithOpenApi(z);
 
@@ -17,3 +18,27 @@ export const createExampleRequestDto = z
   .openapi("CreateExampleRequestDto");
 
 export type CreateExampleRequestDto = z.infer<typeof createExampleRequestDto>;
+
+// --- swagger設定 ---
+registry.register("CreateExampleRequestDto", createExampleRequestDto);
+
+registry.registerPath({
+  method: "post",
+  path: "/examples",
+  description: "Exampleを作成します",
+  summary: "Example作成API",
+  request: {
+    body: {
+      content: {
+        "application/json": {
+          schema: createExampleRequestDto,
+        },
+      },
+    },
+  },
+  responses: {
+    200: {
+      description: "成功時のレスポンス",
+    },
+  },
+});
