@@ -1,7 +1,9 @@
 import type { Request, Response } from "express";
 import z from "zod";
+import type { DrizzleDb } from "../config/db.ts";
 import { HTTP_STATUS } from "../const/http.ts";
 import { createExampleRequestDto } from "../dto/example/createExampleRequestDto.ts";
+import { DrizzleExampleRepository } from "../repository/drizzleExampleRepository.ts";
 import { CreateExampleUsecase } from "../usecase/example/createExampleUsecase.ts";
 
 export class ExampleController {
@@ -11,7 +13,14 @@ export class ExampleController {
     this.createExampleUsecase = createExampleUsecase;
   }
 
-  create = async (req: Request, res: Response): Promise<void> => {
+  public static build = (db: DrizzleDb) => {
+    const exampleRepository = new DrizzleExampleRepository(db);
+    const createExampleUsecase = new CreateExampleUsecase(exampleRepository);
+
+    return new ExampleController(createExampleUsecase);
+  };
+
+  public create = async (req: Request, res: Response): Promise<void> => {
     try {
       const requestDto = createExampleRequestDto.parse(req.body);
 
@@ -25,9 +34,3 @@ export class ExampleController {
     }
   };
 }
-
-export const createExampleController = (): ExampleController => {
-  const createExampleUsecase = new CreateExampleUsecase();
-
-  return new ExampleController(createExampleUsecase);
-};

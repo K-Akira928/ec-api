@@ -1,8 +1,9 @@
 import express from "express";
 import { serve, setup } from "swagger-ui-express";
 import { appConfig } from "./config/app.ts";
+import { db } from "./config/db.ts";
 import { generateOpenApiDoc } from "./config/swagger.ts";
-import { createExampleController } from "./controller/exampleController.ts";
+import { ExampleController } from "./controller/exampleController.ts";
 import { exampleRouter } from "./router/exampleRouter.ts";
 
 const app = express();
@@ -12,6 +13,6 @@ app.use(express.json());
 const document = generateOpenApiDoc();
 
 app.use("/docs", serve, setup(document));
-app.use("/examples", exampleRouter(createExampleController()));
+app.use("/examples", exampleRouter(ExampleController.build(db)));
 
 app.listen(port, () => {});
