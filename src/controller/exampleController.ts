@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import z from "zod";
-import type { DrizzleDb } from "../config/db.ts";
 import { HTTP_STATUS } from "../const/http.ts";
+import type { DrizzleDb } from "../db/drizzle/connection.ts";
 import { createExampleRequestDto } from "../dto/example/createExampleRequestDto.ts";
 import { DrizzleExampleRepository } from "../repository/drizzleExampleRepository.ts";
 import { CreateExampleUsecase } from "../usecase/example/createExampleUsecase.ts";

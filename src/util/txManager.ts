@@ -1,4 +1,4 @@
-import type { DrizzleDb } from "../config/db.ts";
+import type { DrizzleDb } from "../db/drizzle/connection.ts";
 
 export interface TxManager {
   runInTx: <T>(callback: (tx: unknown) => Promise<T>) => Promise<T>;
