@@ -4,6 +4,8 @@ import { appConfig } from "./config/app.ts";
 import { generateOpenApiDoc } from "./config/swagger.ts";
 import { ExampleController } from "./controller/exampleController.ts";
 import db from "./db/drizzle/connection.ts";
+import { errorHandler } from "./middleware/errorHandler.ts";
+import { notFoundHandler } from "./middleware/notFoundHandler.ts";
 import { exampleRouter } from "./router/exampleRouter.ts";
 
 const app = express();
@@ -14,5 +16,9 @@ const document = generateOpenApiDoc();
 
 app.use("/docs", serve, setup(document));
 app.use("/examples", exampleRouter(ExampleController.build(db)));
+
+// 汎用レスポンス系ミドルウェア
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 app.listen(port, () => {});
