@@ -16,7 +16,7 @@ export class DrizzleExampleRepository extends DrizzleBaseRepository {
       await conn.insert(examples).values(example);
     } catch (error) {
       if (this.isDuplicateEntryError(error)) {
-        throw new DuplicateEntryError(error.message);
+        throw new DuplicateEntryError(error.cause?.message ?? error.message);
       }
       throw error;
     }
