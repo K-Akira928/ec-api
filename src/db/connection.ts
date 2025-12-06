@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/mysql2";
 import { createConnection } from "mysql2/promise";
-import { dbConfig } from "../../config/db.ts";
+import { dbConfig } from "../config/db.ts";
 import * as schema from "./schema.ts";
 
 const connection = await createConnection({

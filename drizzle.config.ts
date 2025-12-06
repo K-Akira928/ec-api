@@ -3,8 +3,8 @@ import { dbConfig } from "./src/config/db.ts";
 
 export default defineConfig({
   dialect: "mysql",
-  schema: "./src/db/drizzle/schema.ts",
-  out: "./src/db/drizzle/migration",
+  schema: "./src/db/schema.ts",
+  out: "./src/db/migration",
   dbCredentials: {
     user: dbConfig.DB_USER,
     password: dbConfig.DB_PASSWORD,

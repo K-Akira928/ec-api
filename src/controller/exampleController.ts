@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import { HTTP_STATUS } from "../const/http.ts";
-import type { DrizzleDb } from "../db/drizzle/connection.ts";
+import type { DrizzleDb } from "../db/connection.ts";
 import {
   type CreateExampleResponseDto,
   createExampleRequestDto,

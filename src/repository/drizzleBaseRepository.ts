@@ -1,4 +1,4 @@
-import type { DrizzleDb, DrizzleTx } from "../db/drizzle/connection.ts";
+import type { DrizzleDb, DrizzleTx } from "../db/connection.ts";
 
 export class DrizzleBaseRepository {
   private db: DrizzleDb;

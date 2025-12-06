@@ -1,4 +1,4 @@
-import { examples } from "../db/drizzle/schema.ts";
+import { examples } from "../db/schema.ts";
 import { DrizzleBaseRepository } from "./drizzleBaseRepository.ts";
 
 type InsertExampleData = typeof examples.$inferInsert;
