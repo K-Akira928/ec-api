@@ -17,7 +17,12 @@ export class CreateExampleUsecase {
       nickname: input.nickname,
     };
 
-    await this.exampleRepository.create(example);
+    try {
+      await this.exampleRepository.create(example);
+    } catch (error) {
+      // console.error(error);
+      throw error;
+    }
 
     return { success: true };
   };

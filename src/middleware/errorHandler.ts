@@ -1,11 +1,13 @@
 import type { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 import { ZodError } from "zod";
 import { HTTP_STATUS } from "../const/http.ts";
+import { createConflictErrorResponseDto } from "../dto/share/conflictErrorResponseDto.ts";
 import { createInternalErrorResponseDto } from "../dto/share/internalErrorResponseDto.ts";
 import {
   createValidationErrorResponseDto,
   type InvalidParamsDto,
 } from "../dto/share/validationErrorResponseDto.ts";
+import { DuplicateEntryError } from "../error/duplicateEntryError.ts";
 
 export const errorHandler: ErrorRequestHandler = (
   err: unknown,
@@ -21,6 +23,11 @@ export const errorHandler: ErrorRequestHandler = (
 
     const response = createValidationErrorResponseDto(invalidParams);
     return res.status(HTTP_STATUS.BAD_REQUEST).json(response);
+  }
+
+  if (err instanceof DuplicateEntryError) {
+    const response = createConflictErrorResponseDto();
+    return res.status(HTTP_STATUS.CONFLICT).json(response);
   }
 
   const response = createInternalErrorResponseDto();
