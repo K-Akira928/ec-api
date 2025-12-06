@@ -4,7 +4,7 @@ import { createNotFoundErrorResponseDto } from "../dto/share/notFoundErrorRespon
 
 export const notFoundHandler = (req: Request, res: Response, _: NextFunction) => {
   const response = createNotFoundErrorResponseDto(
-    `Cannot ${req.method} ${req.originalUrl}. The requested was not found.`
+    `指定されたURLが見つかりませんでした: ${req.method} ${req.originalUrl}`
   );
 
   return res.status(HTTP_STATUS.NOT_FOUND).json(response);

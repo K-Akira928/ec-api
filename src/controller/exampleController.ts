@@ -30,7 +30,7 @@ export class ExampleController {
 
       const response: CreateExampleResponseDto = { success: true };
 
-      res.status(HTTP_STATUS.OK).json(response);
+      res.status(HTTP_STATUS.CREATED).json(response);
     } catch (error) {
       next(error);
     }

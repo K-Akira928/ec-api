@@ -1,7 +1,9 @@
 import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 import z from "zod";
 import { registry } from "../../config/swagger.ts";
+import { swaggerInternalErrorResponseDto } from "../share/internalErrorResponseDto.ts";
 import { successApiResponseDto } from "../share/successApiResponseDto.ts";
+import { swaggerValidationErrorResponseDto } from "../share/validationErrorResponseDto.ts";
 
 extendZodWithOpenApi(z);
 
@@ -25,7 +27,6 @@ export type CreateExampleResponseDto = z.infer<typeof createExampleResponseDto>;
 
 // --- swagger設定 ---
 registry.register("CreateExampleRequestDto", createExampleRequestDto);
-
 registry.registerPath({
   method: "post",
   path: "/examples",
@@ -41,8 +42,15 @@ registry.registerPath({
     },
   },
   responses: {
-    200: {
-      description: "成功時のレスポンス",
+    201: {
+      description: "正常に作成",
+      content: {
+        "application/json": {
+          schema: createExampleResponseDto,
+        },
+      },
     },
+    ...swaggerValidationErrorResponseDto,
+    ...swaggerInternalErrorResponseDto,
   },
 });
