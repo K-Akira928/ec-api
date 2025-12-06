@@ -19,18 +19,21 @@ describe("appConfig", () => {
     // テスト用の環境変数をセット
     process.env.APP_ENV = "test";
     process.env.APP_PORT = "3000";
+    process.env.APP_URL = "http://localhost:3000";
 
     const { appConfig } = await import("./app.ts");
 
     expect(appConfig).toEqual({
       APP_ENV: "test",
       APP_PORT: 3000,
+      APP_URL: "http://localhost:3000",
     });
   });
 
   it("APP_PORTがない場合、デフォルト値3000が使われること", async () => {
     process.env.APP_ENV = "test";
     process.env.APP_PORT = "5000";
+    process.env.APP_URL = "http://localhost:3000";
     delete process.env.APP_PORT;
 
     const { appConfig } = await import("./app.ts");

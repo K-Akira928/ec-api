@@ -55,7 +55,7 @@
   },
   "overrides": [
     {
-      "includes": ["src/db/drizzle/migration/**"],
+      "includes": ["src/db/migration/**"],
       "formatter": { "enabled": false },
       "linter": { "enabled": false }
     }

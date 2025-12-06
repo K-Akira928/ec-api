@@ -5,9 +5,9 @@ import { ExampleController } from "./controller/exampleController.ts";
 import db from "./db/connection.ts";
 import { errorHandler } from "./middleware/errorHandler.ts";
 import { notFoundHandler } from "./middleware/notFoundHandler.ts";
-import { registerExampleDoc } from "./router/doc/path/exampleDoc.ts";
-import { generateOpenApiDoc } from "./router/doc/swagger.ts";
 import { exampleRouter } from "./router/exampleRouter.ts";
+import { generateOpenApiDoc } from "./router/swagger/generator.ts";
+import { registerExampleDoc } from "./router/swagger/path/exampleDoc.ts";
 
 const app = express();
 const port = appConfig.APP_PORT;

@@ -1,4 +1,5 @@
 import { OpenAPIRegistry, OpenApiGeneratorV3 } from "@asteasolutions/zod-to-openapi";
+import { appConfig } from "../../config/app.ts";
 
 export const registry = new OpenAPIRegistry();
 
@@ -12,6 +13,6 @@ export const generateOpenApiDoc = () => {
       title: "EC API Documentation",
       description: "ECサイト用APIの仕様書です",
     },
-    servers: [{ url: "http://localhost:3000" }],
+    servers: [{ url: appConfig.APP_URL }],
   });
 };

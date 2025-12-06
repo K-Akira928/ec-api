@@ -3,9 +3,9 @@ import {
   createExampleResponseDto,
 } from "../../../dto/example/createExampleDto.ts";
 import { EXAMPLE_ROUTE } from "../../exampleRouter.ts";
+import { registry } from "../generator.ts";
 import { internalErrorResponseDoc } from "../response/internalErrorResponseDoc.ts";
 import { validationErrorResponseDoc } from "../response/validationErrorResponseDoc.ts";
-import { registry } from "../swagger.ts";
 
 export const registerExampleDoc = () => {
   registry.register("CreateExampleRequestDto", createExampleRequestDto);
