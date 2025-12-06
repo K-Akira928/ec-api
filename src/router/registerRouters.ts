@@ -10,15 +10,15 @@ import { generateOpenApiDoc } from "./swagger/generator.ts";
 import { registerExampleDoc } from "./swagger/path/exampleDoc.ts";
 
 export const registerRouters = (app: Express, db: DrizzleDb) => {
+  // JSONボディパーサー
+  app.use(express.json());
+
   // Swagger Doc
   registerExampleDoc();
 
   // Swagger UI
   const document = generateOpenApiDoc();
   app.use("/docs", serve, setup(document));
-
-  // JSONボディパーサー
-  app.use(express.json());
 
   // API
   app.use(EXAMPLE_ROUTE, exampleRouter(ExampleController.build(db)));
