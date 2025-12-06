@@ -4,7 +4,7 @@ import type { DrizzleDb } from "../db/drizzle/connection.ts";
 import {
   type CreateExampleResponseDto,
   createExampleRequestDto,
-} from "../dto/example/createExampleRequestDto.ts";
+} from "../dto/example/createExampleDto.ts";
 import { DrizzleExampleRepository } from "../repository/drizzleExampleRepository.ts";
 import { CreateExampleUsecase } from "../usecase/example/createExampleUsecase.ts";
 

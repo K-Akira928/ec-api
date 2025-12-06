@@ -9,11 +9,11 @@ extendZodWithOpenApi(z);
 
 export const createExampleRequestDto = z
   .object({
-    name: z.string().min(1, "名前は必須です").openapi({
+    name: z.string("名前は文字列で入力してください").min(1, "名前は必須です").openapi({
       description: "ユーザー名",
       example: "田中 雅也",
     }),
-    nickname: z.string().optional().openapi({
+    nickname: z.string("ニックネームは文字列で入力してください").optional().openapi({
       description: "ニックネーム",
       example: "マサヤ",
     }),

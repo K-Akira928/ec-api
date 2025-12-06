@@ -1,4 +1,4 @@
-import type { CreateExampleRequestDto } from "../../dto/example/createExampleRequestDto.ts";
+import type { CreateExampleRequestDto } from "../../dto/example/createExampleDto.ts";
 import type { DrizzleExampleRepository } from "../../repository/drizzleExampleRepository.ts";
 
 export class CreateExampleUsecase {
