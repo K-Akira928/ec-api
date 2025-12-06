@@ -1,8 +1,10 @@
-import type { Request, Response } from "express";
-import z from "zod";
+import type { NextFunction, Request, Response } from "express";
 import { HTTP_STATUS } from "../const/http.ts";
 import type { DrizzleDb } from "../db/drizzle/connection.ts";
-import { createExampleRequestDto } from "../dto/example/createExampleRequestDto.ts";
+import {
+  type CreateExampleResponseDto,
+  createExampleRequestDto,
+} from "../dto/example/createExampleRequestDto.ts";
 import { DrizzleExampleRepository } from "../repository/drizzleExampleRepository.ts";
 import { CreateExampleUsecase } from "../usecase/example/createExampleUsecase.ts";
 
@@ -20,17 +22,17 @@ export class ExampleController {
     return new ExampleController(createExampleUsecase);
   };
 
-  public create = async (req: Request, res: Response): Promise<void> => {
+  public create = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const requestDto = createExampleRequestDto.parse(req.body);
 
       await this.createExampleUsecase.execute(requestDto);
 
-      res.status(HTTP_STATUS.OK).send();
+      const response: CreateExampleResponseDto = { success: true };
+
+      res.status(HTTP_STATUS.OK).json(response);
     } catch (error) {
-      if (error instanceof z.ZodError) {
-        res.status(HTTP_STATUS.BAD_REQUEST).json({ error: error.issues });
-      }
+      next(error);
     }
   };
 }

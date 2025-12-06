@@ -1,6 +1,7 @@
 import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 import z from "zod";
 import { registry } from "../../config/swagger.ts";
+import { successApiResponseDto } from "../share/successApiResponseDto.ts";
 
 extendZodWithOpenApi(z);
 
@@ -17,7 +18,10 @@ export const createExampleRequestDto = z
   })
   .openapi("CreateExampleRequestDto");
 
+export const createExampleResponseDto = successApiResponseDto(z.object({})).omit({ data: true });
+
 export type CreateExampleRequestDto = z.infer<typeof createExampleRequestDto>;
+export type CreateExampleResponseDto = z.infer<typeof createExampleResponseDto>;
 
 // --- swagger設定 ---
 registry.register("CreateExampleRequestDto", createExampleRequestDto);

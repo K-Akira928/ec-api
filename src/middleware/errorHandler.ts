@@ -1,11 +1,11 @@
 import type { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 import { ZodError } from "zod";
-import { ERROR_CODE, HTTP_STATUS } from "../const/http.ts";
-import type {
-  InternalErrorDto,
-  InvalidParamsDto,
-  ValidationErrorDto,
-} from "../dto/share/apiResponseDto.ts";
+import { HTTP_STATUS } from "../const/http.ts";
+import { createInternalErrorResponseDto } from "../dto/share/internalErrorResponseDto.ts";
+import {
+  createValidationErrorResponseDto,
+  type InvalidParamsDto,
+} from "../dto/share/validationErrorResponseDto.ts";
 
 export const errorHandler: ErrorRequestHandler = (
   err: unknown,
@@ -19,25 +19,10 @@ export const errorHandler: ErrorRequestHandler = (
       reason: issue.message,
     }));
 
-    const response: ValidationErrorDto = {
-      success: false,
-      error: {
-        code: ERROR_CODE.VALIDATION,
-        message: "One or more fields failed validation checks.",
-        invalidParams: invalidParams,
-      },
-    };
-
+    const response = createValidationErrorResponseDto(invalidParams);
     return res.status(HTTP_STATUS.BAD_REQUEST).json(response);
   }
 
-  const response: InternalErrorDto = {
-    success: false,
-    error: {
-      code: ERROR_CODE.INTERNAL,
-      message: "An unexpected error occurred.",
-    },
-  };
-
+  const response = createInternalErrorResponseDto();
   return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json(response);
 };
