@@ -1,5 +1,5 @@
 import { Router } from "express";
-import type { ExampleController } from "../controller/exampleController.ts";
+import type { ExampleController } from "../../controller/exampleController.ts";
 
 export const EXAMPLE_ROUTE = "/examples";
 
