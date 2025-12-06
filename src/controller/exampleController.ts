@@ -1,10 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import { HTTP_STATUS } from "../const/http.ts";
 import type { DrizzleDb } from "../db/connection.ts";
-import {
-  type CreateExampleResponseDto,
-  createExampleRequestDto,
-} from "../dto/example/createExampleDto.ts";
+import { createExampleRequestDto } from "../dto/example/createExampleDto.ts";
 import { DrizzleExampleRepository } from "../repository/drizzleExampleRepository.ts";
 import { CreateExampleUsecase } from "../usecase/example/createExampleUsecase.ts";
 
@@ -26,9 +23,7 @@ export class ExampleController {
     try {
       const requestDto = createExampleRequestDto.parse(req.body);
 
-      await this.createExampleUsecase.execute(requestDto);
-
-      const response: CreateExampleResponseDto = { success: true };
+      const response = await this.createExampleUsecase.execute(requestDto);
 
       res.status(HTTP_STATUS.CREATED).json(response);
     } catch (error) {
