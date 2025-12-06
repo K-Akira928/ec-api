@@ -8,14 +8,11 @@ export const notFoundErrorResponseDto = errorApiResponseDto(
     message: z.string(),
   })
 );
-export const createNotFoundErrorResponseDto = (
-  method: string,
-  url: string
-): NotFoundErrorResponseDto => ({
+export const createNotFoundErrorResponseDto = (message: string): NotFoundErrorResponseDto => ({
   success: false,
   error: {
     code: ERROR_CODE.NOT_FOUND,
-    message: `Cannot ${method} ${url}. The requested was not found.`,
+    message,
   },
 });
 
