@@ -4,6 +4,7 @@ import {
 } from "../../../dto/example/createExampleDto.ts";
 import { EXAMPLE_ROUTE } from "../../path/exampleRouter.ts";
 import { registry } from "../generator.ts";
+import { conflictErrorResponseDoc } from "../response/conflictErrorResponseDoc.ts";
 import { internalErrorResponseDoc } from "../response/internalErrorResponseDoc.ts";
 import { validationErrorResponseDoc } from "../response/validationErrorResponseDoc.ts";
 
@@ -33,6 +34,7 @@ export const registerExampleDoc = () => {
         },
       },
       ...validationErrorResponseDoc,
+      ...conflictErrorResponseDoc,
       ...internalErrorResponseDoc,
     },
   });
