@@ -1,10 +1,10 @@
 import type { CreateExampleRequestDto } from "../../dto/example/createExampleDto.ts";
-import type { DrizzleExampleRepository } from "../../repository/drizzleExampleRepository.ts";
+import type { ExampleRepository } from "../../repository/drizzleExampleRepository.ts";
 
 export class CreateExampleUsecase {
-  private exampleRepository: DrizzleExampleRepository;
+  private exampleRepository: ExampleRepository;
 
-  constructor(exampleRepository: DrizzleExampleRepository) {
+  constructor(exampleRepository: ExampleRepository) {
     this.exampleRepository = exampleRepository;
   }
 
