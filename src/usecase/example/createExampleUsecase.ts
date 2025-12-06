@@ -14,6 +14,6 @@ export class CreateExampleUsecase {
       nickname: input.nickname,
     };
 
-    this.exampleRepository.create(example);
+    await this.exampleRepository.create(example);
   };
 }

@@ -7,6 +7,6 @@ export class DrizzleExampleRepository extends DrizzleBaseRepository {
   public create = async (example: InsertExampleData, tx?: unknown): Promise<void> => {
     const conn = this.getConn(tx);
 
-    conn.insert(examples).values(example);
+    await conn.insert(examples).values(example);
   };
 }

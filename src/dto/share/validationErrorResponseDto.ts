@@ -1,7 +1,5 @@
-import type { ResponseConfig } from "@asteasolutions/zod-to-openapi";
-import type { ResponseObject } from "@asteasolutions/zod-to-openapi/dist/types.js";
 import z from "zod";
-import { ERROR_CODE, HTTP_STATUS } from "../../const/http.ts";
+import { ERROR_CODE } from "../../const/http.ts";
 import { errorApiResponseDto } from "./errorApiResponseDto.ts";
 
 export const invalidParamsDto = z.object({
@@ -30,16 +28,3 @@ export const createValidationErrorResponseDto = (
 
 export type InvalidParamsDto = z.infer<typeof invalidParamsDto>;
 export type ValidationErrorResponseDto = z.infer<typeof validationErrorResponseDto>;
-
-// --- swagger設定 ---
-
-export const swaggerValidationErrorResponseDto: Record<number, ResponseObject | ResponseConfig> = {
-  [HTTP_STATUS.BAD_REQUEST]: {
-    description: "入力内容が不正",
-    content: {
-      "application/json": {
-        schema: validationErrorResponseDto,
-      },
-    },
-  },
-};
