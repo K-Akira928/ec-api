@@ -1,6 +1,6 @@
 import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 import z from "zod";
-import { registry } from "../../config/swagger.ts";
+import { registry } from "../../docs/swagger.ts";
 import { swaggerInternalErrorResponseDto } from "../share/internalErrorResponseDto.ts";
 import { successApiResponseDto } from "../share/successApiResponseDto.ts";
 import { swaggerValidationErrorResponseDto } from "../share/validationErrorResponseDto.ts";

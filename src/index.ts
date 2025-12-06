@@ -1,9 +1,9 @@
 import express from "express";
 import { serve, setup } from "swagger-ui-express";
 import { appConfig } from "./config/app.ts";
-import { generateOpenApiDoc } from "./config/swagger.ts";
 import { ExampleController } from "./controller/exampleController.ts";
 import db from "./db/connection.ts";
+import { generateOpenApiDoc } from "./docs/swagger.ts";
 import { errorHandler } from "./middleware/errorHandler.ts";
 import { notFoundHandler } from "./middleware/notFoundHandler.ts";
 import { exampleRouter } from "./router/exampleRouter.ts";
